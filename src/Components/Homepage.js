@@ -44,7 +44,7 @@ function Homepage() {
                     <div className="filter-btn popular-filter">
                         <button onClick={() => {
                             setRendered('popular')
-                        }}>Popular<i className="fas fa-fire"></i></button>
+                        }}>Trending<i className="fas fa-fire"></i></button>
                     </div>
                     <form action="" className="search-form" onSubmit={handleSubmit}>
                         <div className="input-control">
@@ -56,7 +56,7 @@ function Homepage() {
                         <button onClick={() => {
                             setRendered('airing')
                             getAiringAnime()
-                        }}>Airing</button>
+                        }}>On Airing</button>
                     </div>
                     <div className="filter-btn upcoming-filter">
                         <button onClick={() => {
