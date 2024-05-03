@@ -38,7 +38,7 @@ function AnimeItem() {
     useEffect(() => {
         getAnime(id)
         getCharacters(id)
-    }, [])
+    }, [id]) // include id in the dependency array
 
     return (
         <AnimeItemStyled>

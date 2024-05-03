@@ -9,11 +9,11 @@ function Homepage() {
 
     const {handleSubmit, 
         search, 
-        searchAnime,
+       // searchAnime,
         handleChange ,
         getUpcomingAnime,
         getAiringAnime,
-        getPopularAnime,
+       // getPopularAnime,
     } = useGlobalContext()
 
     const [rendered, setRendered] = React.useState('popular')
