@@ -10,15 +10,15 @@ function Upcoming({rendered}) {
     const conditionalRender = () => {
         if(!isSearch && rendered === 'upcoming'){
             return upcomingAnime?.map((anime) => {
-                return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+                return <AnimeLink to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
                     <img src={anime.images.jpg.large_image_url} alt="" />
-                </Link>
+                </AnimeLink>
             })
         }else{
             return searchResults?.map((anime) => {
-                return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+                return <AnimeLink to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
                     <img src={anime.images.jpg.large_image_url} alt="" />
-                </Link>
+                </AnimeLink>
             })
         }
     }
@@ -65,6 +65,12 @@ const PopularStyled = styled.div`
         }
     }
 `;
+const AnimeLink = styled(Link)` 
+    transition: transform 0.3s ease-in-out;  /* Smooth transition effect */
 
+    &:hover {
+        transform: scale(1.05);  /* Slight enlargement on hover */
+    }
+`;
 
 export default Upcoming

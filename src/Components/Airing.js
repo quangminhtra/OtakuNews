@@ -10,9 +10,9 @@ function Airing({rendered}) {
     const conditionalRender = () => {
         if(!isSearch && rendered === 'airing'){
             return airingAnime?.map((anime) => {
-                return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+                return <AnimeLink to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
                     <img src={anime.images.jpg.large_image_url} alt="" />
-                </Link>
+                </AnimeLink>
             })
         }else{
             return searchResults?.map((anime) => {
@@ -63,6 +63,14 @@ const PopularStyled = styled.div`
             object-fit: cover;
             border-radius: 15px;  /* Increased rounding */
         }
+    }
+`;
+
+const AnimeLink = styled(Link)` 
+    transition: transform 0.3s ease-in-out;  /* Smooth transition effect */
+
+    &:hover {
+        transform: scale(1.05);  /* Slight enlargement on hover */
     }
 `;
 
