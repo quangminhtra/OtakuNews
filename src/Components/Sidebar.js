@@ -30,29 +30,44 @@ function Sidebar() {
 
 const SidebarStyled = styled.div`
     margin-top: 2rem;
-    background-color: #fff;
+    background-color: rgb(35, 45, 63);
     border-top: 5px solid #e5e7eb;
-    padding-right: 5rem;
-    padding-left: 2rem;
+    padding-right: 1rem;
+    padding-left: 5rem;
     padding-top: 2rem;
+    h3 {
+        
+            
+    background: linear-gradient(to right, #A855F7 10%, #4FFFB0);
+    -webkit-background-clip: text;  /* Clip the background to the text */
+    -webkit-text-fill-color: transparent;  /* Make the text fill transparent */
+     background-clip: text;  /* Clip the background to the text for non-WebKit browsers */
+    text-fill-color: transparent;  /* Transparent fill for non-WebKit browsers */
+    font-size: 35px;
+    padding-bottom: 1rem;
+    padding-right: 20px
+    padding-left: 20px
+    }
     .anime{
         display: flex;
         flex-direction: column;
         width: 150px;
         img{
             width: 100%;
-            border-radius: 5px;
-            border: 5px solid #e5e7eb;
+            border-radius: 10px;
+            border: 5px solid rgb(250, 249, 246);
         }
         a{
-            margin-top: 1rem;
+            margin-top: 2rem;
             display: flex;
             flex-direction: column;
-            gap: .4rem;
-            color: #27AE60;
-            h4{
+            gap: .2rem;
+            color: rgb(65, 176, 110);
+            h5{
                 font-size: 1.1rem;
+                align-self: center;
             }
+            
         }
     }
 `;

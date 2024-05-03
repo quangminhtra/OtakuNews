@@ -72,59 +72,77 @@ function Homepage() {
 }
 
 const HomepageStyled = styled.div`
-    background-color: #EDEDED;
-    header{
+    background-color: rgb(27, 18, 18);  /* Softer background */
+    
+    header {
         padding: 2rem 5rem;
         width: 60%;
         margin: 0 auto;
         transition: all .4s ease-in-out;
-        @media screen and (max-width:1530px){
+        
+        @media screen and (max-width: 1530px) {
             width: 95%;
         }
-        .logo{
+        
+        .logo {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
         }
-        .search-container{
+        h1 {
+            font-size: 5rem;
+            background: linear-gradient(to right, #FF6F61 23%, #FFC107);  /* Apply gradient background */
+            -webkit-background-clip: text;  /* Clip the background to the text */
+            -webkit-text-fill-color: transparent;  /* Make the text fill transparent */
+            background-clip: text;  /* Clip the background to the text for non-WebKit browsers */
+            text-fill-color: transparent;  /* Transparent fill for non-WebKit browsers */
+        }
+        .search-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            button{
+
+            button {
                 display: flex;
                 align-items: center;
                 gap: .5rem;
                 padding: .7rem 1.5rem;
                 outline: none;
                 border-radius: 30px;
-                font-size: 1.2rem;
-                background-color: #fff;
+                font-size: 1.5rem;
+                background-color: rgb(239, 188, 155);  /* Anime-inspired color */
                 cursor: pointer;
                 transition: all .4s ease-in-out;
-                font-family: inherit;
-                border: 5px solid #e5e7eb;
+                font-family: Pokemon;
+                border: 4px solid rgb(240, 230, 140);  /* Brighter border */
+                cp
             }
-            form{
+
+            form {
                 position: relative;
                 width: 100%;
-                .input-control{
+
+                .input-control {
                     position: relative;
                     transition: all .4s ease-in-out;
                 }
-                .input-control input{
+
+                .input-control input {
                     width: 100%;
-                    padding:.7rem 1rem;
+                    padding: .7rem 1rem;
                     border: none;
                     outline: none;
                     border-radius: 30px;
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                     background-color: #fff;
-                    border: 5px solid #e5e7eb;
+                    border: 4px solid rgb(240, 230, 140);  /* Brighter border */
                     transition: all .4s ease-in-out;
+                    Font-family: Pokemon;
                 }
-                .input-control button{
+
+                .input-control button {
                     position: absolute;
                     right: 0;
                     top: 50%;

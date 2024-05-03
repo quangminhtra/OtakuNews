@@ -53,54 +53,64 @@ function Gallery() {
 }
 
 const GalleryStyled = styled.div`
-    background-color: #EDEDED;
+    background-color: rgb(27, 18, 18);  /* Softer background */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .back{
+
+    .back {
         position: absolute;
         top: 2rem;
         left: 2rem;
-        a{
+        a {
             font-weight: 600;
             text-decoration: none;
-            color: #EB5757;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #FF4081 23%, #FF69B4);
+            -webkit-background-clip: text;  /* Clip the background to the text */
+            -webkit-text-fill-color: transparent;  /* Make the text fill transparent */
+            background-clip: text;  /* Clip the background to the text for non-WebKit browsers */
+            text-fill-color: transparent;  /* Transparent fill for non-WebKit browsers */
             display: flex;
             align-items: center;
             gap: .5rem;
         }
     }
-    .big-image{
+
+    .big-image {
         display: inline-block;
         padding: 2rem;
         margin: 2rem 0;
-        background-color: #fff;
-        border-radius: 7px;
-        border: 5px solid #e5e7eb;
+        background-color: 	rgb(252, 245, 229);
+        border-radius: 10px;  /* Increased rounding */
+        border: 4px solid rgb(255, 253, 208);  /* Brighter border */
         position: relative;
-        img{
+
+        img {
             width: 350px;
+            border-radius: 15px;
         }
     }
 
-    .small-images{
+    .small-images {
         display: flex;
         flex-wrap: wrap;
         gap: .5rem;
         width: 80%;
         padding: 2rem;
-        border-radius: 7px;
-        background-color: #fff;
-        border: 5px solid #e5e7eb;
-        img{
+        border-radius: 10px;  /* Increased rounding */
+        background-color: rgb(255, 229, 180);
+        border: 4px solid rgb(255, 253, 208);  /* Consistent border color */
+
+        img {
             width: 6rem;
             height: 6rem;
             object-fit: cover;
             cursor: pointer;
             border-radius: 5px;
-            border: 3px solid #e5e7eb;
-        } 
+            border: 3px solid rgb(226, 223, 210);
+        }
     }
 `;
 
