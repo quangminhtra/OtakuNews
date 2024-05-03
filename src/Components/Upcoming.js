@@ -66,12 +66,5 @@ const PopularStyled = styled.div`
     }
 `;
 
-const AnimeLink = styled(Link)` 
-    transition: transform 0.3s ease-in-out;  /* Smooth transition effect */
-
-    &:hover {
-        transform: scale(1.05);  /* Slight enlargement on hover */
-    }
-`;
 
 export default Upcoming
