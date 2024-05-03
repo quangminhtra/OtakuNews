@@ -76,7 +76,7 @@ function AnimeItem() {
                         title="Inline Frame Example"
                         width="800"
                         height="450"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen>
                     </iframe> :
                     <h3>Trailer not available</h3>
