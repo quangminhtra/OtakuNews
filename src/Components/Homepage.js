@@ -72,7 +72,7 @@ function Homepage() {
 }
 
 const HomepageStyled = styled.div`
-    background-color: rgb(27, 18, 18);  /* Softer background */
+    background-color: background: linear-gradient(to right, #000000, #f0f0f0); /* Softer background */
     
     header {
         padding: 2rem 5rem;
