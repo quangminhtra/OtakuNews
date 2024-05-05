@@ -1,44 +1,41 @@
-import React, { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 function AnimeItem() {
-    const {id} = useParams()
+    const { id } = useParams();
 
-    //state
-    const [anime, setAnime] = React.useState({})
-    const [characters, setCharacters] = React.useState([])
-    const [showMore, setShowMore] = React.useState(false)
+    // State
+    const [anime, setAnime] = React.useState({});
+    const [characters, setCharacters] = React.useState([]);
+    const [showMore, setShowMore] = React.useState(false);
 
-    //destructure anime
+    // Destructure anime
     const {
-        title, synopsis, 
-        trailer,duration,aired, 
-        season, images, rank, 
-        score,scored_by, popularity, 
-        status, rating, source } = anime
+        title, synopsis, trailer, duration, aired,
+        season, images, rank, score, scored_by,
+        popularity, status, rating, source
+    } = anime;
 
-    //get anime based on id
+    // Get anime by ID
     const getAnime = async (anime) => {
-        const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}`)
-        const data = await response.json()
-        setAnime(data.data)
-    }
+        const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}`);
+        const data = await response.json();
+        setAnime(data.data);
+    };
 
-    //get characters
+    // Get characters
     const getCharacters = async (anime) => {
-        const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}/characters`)
-        const data = await response.json()
-        setCharacters(data.data)
-        console.log(data.data)
-    }
+        const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}/characters`);
+        const data = await response.json();
+        setCharacters(data.data);
+    };
 
-
-    //initial render
+    // Initial render
     useEffect(() => {
-        getAnime(id)
-        getCharacters(id)
-    }, [id]) // include id in the dependency array
+        getAnime(id);
+        getCharacters(id);
+    }, [id]);
 
     return (
         <AnimeItemStyled>
@@ -63,79 +60,80 @@ function AnimeItem() {
                 </div>
                 <p className="description">
                     {showMore ? synopsis : synopsis?.substring(0, 450) + '...'}
-                    <button onClick={() => {
-                        setShowMore(!showMore)
-                    }}>{showMore ? 'Show Less': 'Read More'}</button>
+                    <button onClick={() => setShowMore(!showMore)}>
+                        {showMore ? 'Show Less' : 'Read More'}
+                    </button>
                 </p>
             </div>
             <h3 className="title">Trailer</h3>
             <div className="trailer-con">
-                {trailer?.embed_url ? 
-                    <iframe 
-                        src={trailer?.embed_url} 
+                {trailer?.embed_url ?
+                    <iframe
+                        src={trailer?.embed_url}
                         title="Inline Frame Example"
                         width="800"
                         height="450"
                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen>
-                    </iframe> :
+                        allowFullScreen
+                    ></iframe> :
                     <h3>Trailer not available</h3>
                 }
             </div>
             <h3 className="title">Characters</h3>
             <div className="characters">
                 {characters?.map((character, index) => {
-                    const {role} = character
-                    const {images, name, mal_id} = character.character
+                    const { role } = character;
+                    const { images, name, mal_id } = character.character;
                     return <Link to={`/character/${mal_id}`} key={index}>
                         <div className="character">
                             <img src={images?.jpg.image_url} alt="" />
                             <h4>{name}</h4>
                             <p>{role}</p>
                         </div>
-                    </Link>
+                    </Link>;
                 })}
             </div>
-        </AnimeItemStyled >
-    )
+        </AnimeItemStyled>
+    );
 }
 
 const AnimeItemStyled = styled.div`
     padding: 3rem 18rem;
     background-color: rgb(27, 18, 18);
-    h1{
+
+    h1 {
         display: inline-block;
         font-size: 3rem;
         margin-bottom: 1.5rem;
         cursor: pointer;
         background: linear-gradient(to right, #FF6F61 23%, #FFC107);
-
         text-transform: uppercase;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         transition: all .4s ease-in-out;
-        &:hover{
+
+        &:hover {
             transform: skew(-3deg);
         }
     }
-    .title{
+
+    .title {
         display: inline-block;
         margin: 3rem 0;
-        font-size:3 rem;
+        font-size: 2.5rem;
         cursor: pointer;
         background: linear-gradient(to right, #FF6F61 23%, #FFC107);
-
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text align: center;
+        text-align: center;
     }
 
-    .description{
+    .description {
         margin-top: 2rem;
         color: #34495e;
         line-height: 1.7rem;
 
-        button{
+        button {
             background-color: transparent;
             border: none;
             outline: none;
@@ -147,11 +145,12 @@ const AnimeItemStyled = styled.div`
         }
     }
 
-    .trailer-con{
+    .trailer-con {
         display: flex;
         justify-content: center;
         align-items: center;
-        iframe{
+
+        iframe {
             outline: none;
             border: 5px solid rgb(255, 229, 180);
             padding: 1.5rem;
@@ -160,34 +159,39 @@ const AnimeItemStyled = styled.div`
         }
     }
 
-    .details{
+    .details {
         background-color: rgb(237, 234, 222);
         border-radius: 20px;
         padding: 2rem;
         border: 5px solid rgb(255, 229, 180);
-        .detail{
+
+        .detail {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            img{
+
+            img {
                 border-radius: 7px;
             }
         }
-        .anime-details{
+
+        .anime-details {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            p{
+
+            p {
                 display: flex;
                 gap: 1rem;
             }
-            p span:first-child{
+
+            p span:first-child {
                 font-weight: 600;
                 color: #34495e;
             }
         }
     }
 
-    .characters{
+    .characters {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 2rem;
@@ -195,30 +199,81 @@ const AnimeItemStyled = styled.div`
         padding: 2rem;
         border-radius: 20px;
         border: 5px solid rgb(255, 229, 180);
-        .character{
+
+        .character {
             padding: .4rem .6rem;
             border-radius: 7px;
             transition: all .4s ease-in-out;
-            img{
+
+            img {
                 border-radius: 15px;
                 width: 200px;
-                height: 300px;  /* Set a fixed height to ensure consistency */
-                object-fit: cover;  /* Maintains aspect ratio and fills the space */
+                height: 300px;
+                object-fit: cover;
             }
-            h4{
+
+            h4 {
                 padding: .5rem 0;
                 color: #454e56;
                 text-align: center;
             }
-            p{
+
+            p {
                 color: #27AE60;
                 text-align: center;
             }
-            &:hover{
+
+            &:hover {
                 transform: translateY(-5px);
             }
         }
     }
+
+    @media (max-width: 1200px) {
+        padding: 2rem 10rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1.5rem 5rem;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
+
+        .characters {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .trailer-con iframe {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        padding: 1rem 2rem;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .characters {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+
+        .trailer-con iframe {
+            width: 100%;
+            height: auto;
+        }
+    }
 `;
 
-export default AnimeItem
+export default AnimeItem;
